@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Editar Conta
+{% endblock %}
+
+{% block content %}
+    <h1>Editar Conta</h1>
+
+    {% if estudante %}
+        <form method="POST" action="{{ url_for('editar_conta') }}">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" class="form-control" id="nome" name="nome" value="{{ estudante[1] }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ estudante[2] }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="curso">Curso:</label>
+                <input type="text" class="form-control" id="curso" name="curso" value="{{ estudante[3] }}" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+    {% else %}
+        <p>Dados do estudante não encontrados.</p>
+    {% endif %}
+{% endblock %}

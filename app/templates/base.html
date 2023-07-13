@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Home{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">PonderaUnB</a>
+    <div class="collapse navbar-collapse" id="navbar">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" id="home" href="/">Home</a>
+            
+            {% if session['email'] %}
+                <!-- Conteúdo para usuários logados -->
+                <a class="nav-item nav-link" href="/perfil">Perfil</a>
+                <a class="nav-item nav-link" href="/logout">Sair</a>
+            {% else %}
+                <!-- Conteúdo para usuários deslogados -->
+                <a class="nav-item nav-link" href="/cadastro">Registrar-se</a>
+                <a class="nav-item nav-link" href="/login">Entrar</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+</html>
